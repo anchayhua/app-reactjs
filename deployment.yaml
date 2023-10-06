@@ -17,4 +17,4 @@ spec:
         image: anchayhua/app-reactjs
         imagePullPolicy: Always
         ports:
-        - containerPort: 5000
+        - containerPort: 3000
