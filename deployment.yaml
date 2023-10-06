@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-reactjs-deployments
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-reactjs
+  template:
+    metadata:
+      labels:
+        app: app-reactjs
+    spec:
+      containers:
+      - name: app-reactjs
+        image: anchayhua/app-reactjs
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
