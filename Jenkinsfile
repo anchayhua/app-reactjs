@@ -22,9 +22,9 @@ pipeline {
                 script {
                     // Aquí ejecuta el escáner de SonarQube
                     sh 'npm run sonar-scanner \
-                            -Dsonar.projectKey=app-reactjs 
-                            -Dsonar.sources=src 
-                            -Dsonar.host.url=http://localhost:9000 
+                            -Dsonar.projectKey=app-reactjs \
+                            -Dsonar.sources=. \
+                            -Dsonar.host.url=http://localhost:9000 \
                             -Dsonar.token=$SONAR_CREDENTIALS_PSW'
                 }
             }
@@ -36,7 +36,7 @@ pipeline {
         //         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         //         sh 'docker push anchayhua/app-reactjs' // Sube la imagen a un registro de Docker
         //     }
-        // }
+        // } npm run sonar-scanner -Dsonar.projectKey=app-reactjs -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_92568e4c0c66afe9bfec539ec743393ae4eb60d8'
 
         stage('Test kubectl') {
             steps {
