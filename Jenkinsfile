@@ -7,12 +7,26 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('jenkins-dockerhub')
+        SONAR_CREDENTIALS = credentials('app-reactjs')
     }
 
     stages {
         stage('Checkout') {
             steps {
                 checkout scm // Esto verifica el código fuente desde el repositorio
+            }
+        }
+
+        stage('Análisis de SonarQube') {
+            steps {
+                script {
+                    // Aquí ejecuta el escáner de SonarQube
+                    sh 'npm run sonar-scanner \
+                            -Dsonar.projectKey=app-reactjs 
+                            -Dsonar.sources=src 
+                            -Dsonar.host.url=http://localhost:9000 
+                            -Dsonar.token=$SONAR_CREDENTIALS_PSW'
+                }
             }
         }
 
