@@ -20,7 +20,7 @@ pipeline {
         stage('Run SonarQube Analysis') {
             steps {
                 script {
-                    sh 'npm run sonar-scanner' // Aquí ejecuta el escáner de SonarQube
+                    // sh 'npm run sonar-scanner' // Aquí ejecuta el escáner de SonarQube
                     sh 'sonar-scanner \
                             -Dsonar.projectKey=prueba \
                             -Dsonar.sources=. \
