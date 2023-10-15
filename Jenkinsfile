@@ -21,7 +21,11 @@ pipeline {
             steps {
                 script {
                     sh 'npm run sonar-scanner' // Aquí ejecuta el escáner de SonarQube
-                }
+                    sh 'sonar-scanner \
+                            -Dsonar.projectKey=prueba \
+                            -Dsonar.sources=. \
+                            -Dsonar.host.url=http://localhost:9000 \
+                            -Dsonar.token=sqp_3bafc2c3065029aa50eb9fc1af80a292814796d2'               }
             }
         }
 
